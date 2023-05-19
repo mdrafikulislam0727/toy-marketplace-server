@@ -39,6 +39,12 @@ async function run() {
       res.send(result)
     })
 
+    app.get('/toyCars/email', async(req, res)=>{
+      const cars =await toyCarCollection.find().toArray()
+      res.send(cars)
+      
+    })
+
     app.post('/toyCars', async(req, res)=>{
       const newToyCar =req.body;
       console.log(newToyCar)
