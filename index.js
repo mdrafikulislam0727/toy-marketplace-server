@@ -33,7 +33,12 @@ async function run() {
       const result = await cursor.toArray();
       res.send(result)
     })
-   
+    app.get('/toyCars/:id', async(req, res)=>{
+      const id =req.params.id;
+      const query ={_id: new Object(id)}
+      const result = await toyCarCollection.findOne(query);
+      res.send(result)
+    })
 
     app.post('/toyCars', async(req, res)=>{
       const newToyCar =req.body;
