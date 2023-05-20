@@ -27,11 +27,6 @@ async function run() {
 
     const toyCarCollection = client.db('toyCarDB').collection('toyCar');
 
-    app.get('/toyCars', async (req, res) => {
-      const cursor = toyCarCollection.find();
-      const result = await cursor.toArray();
-      res.send(result)
-    })
     app.get('/toyCars/:id', async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) }
@@ -40,6 +35,7 @@ async function run() {
     })
 
     app.get('/toyCars', async(req, res)=>{
+      let query ={}
       console.log(req.query.email)
       if(req.query?.email){
         query = {email: req.query.email}
