@@ -25,16 +25,16 @@ async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
 
-    const toyCarCollection = client.db('toyCarDB').collection('toyCar');
-    app.get("/toyCars/:text", async(req, res)=>{
-      console.log(req.params.text)
-      if(req.params.text=="sportcar" || req.params.text=="minipolicecar" || req.params.text=="regularcar"){
-        const result =await toyCarCollection.find({category: req.params.text}).toArray()
-        return res.send(result)
-      }
-      const result =await toyCarCollection.find({}).toArray();
-      res.send(result)
-    })
+    // const toyCarCollection = client.db('toyCarDB').collection('toyCar');
+    // app.get("/toyCars/:text", async(req, res)=>{
+    //   console.log(req.params.text)
+    //   if(req.params.text=="sportcar" || req.params.text=="minipolicecar" || req.params.text=="regularcar"){
+    //     const result =await toyCarCollection.find({category: req.params.text}).toArray()
+    //     return res.send(result)
+    //   }
+    //   const result =await toyCarCollection.find({}).toArray();
+    //   res.send(result)
+    // })
     app.get('/toyCars/:id', async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) }
